@@ -1,0 +1,79 @@
+HW-6    CS451   10 points       Due: November 13
+
+For this assignment we will honor those who have been married
+(and divorced) multiple times. AKA If at first you don't succeed, 
+try, try again. Don't give up too easily; persistence pays off 
+in the end. The proverb has been traced back to 'Teacher's Manual' 
+by American educator Thomas H. Palmer and 'The Children of the 
+New Forest' by English novelist Frederick Maryat (1792-1848). 
+Originally a maxim used to encourage American schoolchildren 
+to do their homework. Palmer (1782-1861) wrote in his 'Teacher's 
+Manual': 'Tis a lesson you should heed, try, try again. If at 
+first you don't succeed, try, try again.' The saying was popularized 
+by Edward Hickson (1803-70) in his 'Moral Song' and is now applicable 
+to any kind of activity." From "Random House Dictionary of Popular 
+Proverbs and Sayings" by Gregory Y. Titelman (Random House, New York, 
+1996, Page 154).
+
+PART 1:
+-------
+Create a set of 4 stand-alone programs, as follows: 
+
+Program #0 - Will always be called first and must create a set of
+semaphores. Program #0 must print the exact text "Executing process 
+#0." when it runs. It must then terminate.
+
+Program #1 - Will be started sometime after program #0 and must 
+adjust the semaphore(s) such that program #2 can run. Program #1
+must print the exact text "Executing process #1." when it runs. It 
+must then terminate. Program #1 doesn't do anything else.
+
+Program #2 - Will be started sometime after program #0 and must 
+adjust the semaphore(s) such that program #3 can run. Program #2
+must print the exact text "Executing process #2." when it runs. 
+It must then terminate. Program #2 doesn't do anything else. However, 
+program #2 can only run AFTER program #1 runs! If program #2 runs 
+before program #1 it must simply terminate itself.
+
+Program #3 - Will be started sometime after program #0 and should
+remove the semaphores from the system. Program #3 must print the 
+exact text "Executing process #3." when it runs. It must then 
+terminate. Program #3 doesn't do anything else. However, program #3 
+can only run AFTER program #2 runs! If program #3 runs before program 
+#2 it must simply terminate itself.
+
+PART 2:
+-------
+We will test your code using my program (a script) that will always 
+call program #0 first, but will call the remaining programs in all 
+possible permutations. Obviously, to get full credit only the correct 
+permutation should result in the following output:
+
+Executing process #0.
+Executing process #1.
+Executing process #2.
+Executing process #3.
+
+SUGGESTIONS:
+------------
+Since you can only use a single semaphore, I suggest a counting
+semaphore.
+
+See man pages for semget, semop, and semctl.
+
+See man pages for errno and include errno.h - this will make things
+much easier! You can use errno to troubleshoot your code and to help
+determine how to tell when a process is attempted out-of-turn.
+
+See my web site for a new file (errno.txt).
+
+REQUIREMENTS:
+-------------
+1. Your program must run on the Linux Mint we have in CEM (Leonard or the server).
+2. Your full name must appear as a comment at the beginning of your 
+   program.
+3. Your programs MUST be named program0, program1, program2, and program3.
+   My script will assume those filenames. If your programs do not work because
+   you used different filename, you will get 0 points.
+4. Your program must only use semaphores for synchronization.
+6. Failure to follow 3 and 4 will result in -50% of the grade.
